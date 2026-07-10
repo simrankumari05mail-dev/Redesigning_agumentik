@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agumentik Educamp — Amplify Your Learning Journey with cutting-edge tech training, placement support & skill development programs.">
+    <meta name="author" content="Agumentik Educamp">
+    <title>Agumentik Educamp — Level Up Your Career 🚀</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ═══════════════════ 3D CANVAS ═══════════════════ -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- ═══════════════════ CURSOR GLOW ═══════════════════ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ═══════════════════ NOISE OVERLAY ═══════════════════ -->
+    <div class="noise-overlay"></div>
+
+    <!-- ═══════════════════ LOADING SCREEN ═══════════════════ -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">
+                <img src="assets/logo.png" alt="Loading" class="loader-logo-img">
+            </div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill" id="loaderFill"></div>
+            </div>
+            <p class="loader-text">Welcome!!</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="Agumentik Educamp" class="nav-logo-img">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <div class="nav-item dropdown-parent">
+                    <a href="#about" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="#mission">Mission</a>
+                        <a href="#vision">Vision</a>
+                        <a href="#why-us">Why Choose Us</a>
+                        <a href="#training">Training</a>
+                        <a href="#placement">Placement Support</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown-parent">
+                    <a href="#courses" class="nav-link">Courses <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="#courses">Backend Development</a>
+                        <a href="#courses">Digital Marketing</a>
+                        <a href="#courses">Full Stack MERN</a>
+                        <a href="#courses">Full Stack Java</a>
+                        <a href="#courses">HR Mastery</a>
+                        <a href="#courses">Sales Training</a>
+                        <a href="#courses">Frontend Dev</a>
+                    </div>
+                </div>
+                <a href="#categories" class="nav-link">Short Courses</a>
+                <div class="nav-item dropdown-parent">
+                    <a href="#" class="nav-link">Special Programs <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="#">BBA</a>
+                        <a href="#">BCA</a>
+                        <a href="#">B.Com</a>
+                        <a href="#">MBA</a>
+                        <a href="#">MCA</a>
+                    </div>
+                </div>
+                <a href="#faq" class="nav-link">FAQs</a>
+                <a href="#" class="nav-link">Blogs</a>
+                <div class="nav-item dropdown-parent">
+                    <a href="#contact" class="nav-link">Support <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="tel:+918069640295">Call Us</a>
+                        <a href="https://api.whatsapp.com/send?phone=+918069640295">WhatsApp</a>
+                        <a href="mailto:info@agumentikeducamp.com">Email</a>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-cta" onclick="openModal()">Enroll Now 🎓</button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-container">
+            <div class="hero-content" data-parallax="0.05">
+                <div class="hero-badge" data-animate="fade-up">
+                    <span class="badge-dot"></span>
+                    <span>Part of the Agumentik Group of Companies</span>
+                </div>
+                <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                    Amplify Your<br>
+                    <span class="gradient-text">Learning Journey</span><br>
+                    <span class="typewriter" id="typewriter"></span>
+                </h1>
+                <p class="hero-description" data-animate="fade-up" data-delay="200">
+                    Join Agumentik Educamp — a leading EdTech company offering cutting-edge technology training 
+                    and placement-oriented skill development programs. Explore workshops, live & virtual training, 
+                    and the exclusive Agumentik Special Program with NAAC A+ Grade College Degree. 🎓
+                </p>
+                <div class="hero-actions" data-animate="fade-up" data-delay="300">
+                    <button class="btn-primary-glow btn-3d" onclick="openModal()">
+                        <span>Consult Us Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="btn-shimmer"></div>
+                    </button>
+                    <button class="btn-glass btn-3d" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">
+                        <i class="fas fa-play"></i>
+                        <span>Explore Courses</span>
+                    </button>
+                </div>
+                <div class="hero-stats-mini" data-animate="fade-up" data-delay="400">
+                    <div class="stat-mini">
+                        <div class="stat-avatars">
+                            <div class="avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899)">S</div>
+                            <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#06b6d4)">R</div>
+                            <div class="avatar" style="background:linear-gradient(135deg,#10b981,#059669)">A</div>
+                            <div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">K</div>
+                        </div>
+                        <span>2,000+ Students Enrolled</span>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>4.8/5 Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-parallax="-0.05">
+                <div class="hero-3d-scene" id="hero3dScene">
+                    <!-- 3D Floating Elements -->
+                    <div class="float-card float-card-1" data-depth="0.3">
+                        <div class="float-card-inner glass-card">
+                            <i class="fas fa-code" style="color:#06b6d4"></i>
+                            <span>Full Stack</span>
+                        </div>
+                    </div>
+                    <div class="float-card float-card-2" data-depth="0.5">
+                        <div class="float-card-inner glass-card">
+                            <i class="fas fa-chart-line" style="color:#10b981"></i>
+                            <span>Marketing</span>
+                        </div>
+                    </div>
+                    <div class="float-card float-card-3" data-depth="0.2">
+                        <div class="float-card-inner glass-card">
+                            <i class="fas fa-users-cog" style="color:#ec4899"></i>
+                            <span>HR Mastery</span>
+                        </div>
+                    </div>
+                    <div class="float-card float-card-4" data-depth="0.4">
+                        <div class="float-card-inner glass-card">
+                            <i class="fas fa-brain" style="color:#f59e0b"></i>
+                            <span>AI & ML</span>
+                        </div>
+                    </div>
+                    <!-- Center 3D Orb -->
+                    <div class="center-orb-3d">
+                        <div class="orb-ring-3d ring-1"></div>
+                        <div class="orb-ring-3d ring-2"></div>
+                        <div class="orb-ring-3d ring-3"></div>
+                        <div class="orb-core-3d">
+                            <img src="assets/logo.png" alt="Agumentik" class="orb-logo">
+                        </div>
+                    </div>
+                    <!-- Floating 3D Geometric Shapes -->
+                    <div class="geo-shape geo-torus" data-depth="0.6"></div>
+                    <div class="geo-shape geo-cube" data-depth="0.3"></div>
+                    <div class="geo-shape geo-sphere" data-depth="0.4"></div>
+                    <div class="geo-shape geo-pyramid" data-depth="0.5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ FEATURES / WHY CHOOSE US ═══════════════════ -->
+    <section class="features" id="why-us">
+        <div class="section-container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">✨ Why Choose Us</span>
+                <h2 class="section-title">Your Gateway to <span class="gradient-text">Tech Excellence</span></h2>
+                <p class="section-subtitle">We don't just teach — we transform careers with industry-driven programs</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass-card tilt-card active" data-animate="fade-up" data-delay="0">
+                    <div class="feature-card-glow"></div>
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Professional Courses</h3>
+                    <p>Industry-aligned courses in Full Stack, Digital Marketing, HR, Sales & more — designed by experts who have been there.</p>
+                    <div class="feature-tag">7+ Courses</div>
+                </div>
+                <div class="feature-card glass-card tilt-card" data-animate="fade-up" data-delay="100">
+                    <div class="feature-card-glow"></div>
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-award"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Agumentik Special Program</h3>
+                    <p>Earn a NAAC A+ Grade College Degree while gaining practical skills. Get the best of academic and professional worlds.</p>
+                    <div class="feature-tag">Degree + Skills</div>
+                </div>
+                <div class="feature-card glass-card tilt-card" data-animate="fade-up" data-delay="200">
+                    <div class="feature-card-glow"></div>
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-rocket"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>87% Placement Rate</h3>
+                    <p>Our dedicated placement cell connects you with top companies. Resume building, mock interviews, and direct referrals included.</p>
+                    <div class="feature-tag">Top Companies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ COURSES ═══════════════════ -->
+    <section class="courses" id="courses">
+        <div class="section-container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">📚 Our Programs</span>
+                <h2 class="section-title">Master Skills That <span class="gradient-text">Companies Want</span></h2>
+                <p class="section-subtitle">From coding to marketing — programs built for the real world</p>
+            </div>
+            <div class="courses-carousel">
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="0">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#1e1b4b,#312e81)"><i class="fas fa-server"></i></div>
+                        <span class="course-badge" style="color:#06b6d4">🔥 Hot</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.00)</span></div>
+                        <h4>Backend Development</h4>
+                        <p class="course-desc">Master server-side technologies with Node.js, databases, APIs and cloud deployment.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 04 Months</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="100">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#3b0764,#7e22ce)"><i class="fas fa-bullhorn"></i></div>
+                        <span class="course-badge" style="color:#a855f7">⭐ Popular</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.00)</span></div>
+                        <h4>Master Digital Marketing</h4>
+                        <p class="course-desc">Learn SEO, social media, paid ads, content strategy and analytics from industry pros.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 04 Months</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="200">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#042f2e,#0f766e)"><i class="fas fa-layer-group"></i></div>
+                        <span class="course-badge" style="color:#10b981">🚀 Trending</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.80)</span></div>
+                        <h4>Full Stack with MERN</h4>
+                        <p class="course-desc">Build complete web applications with MongoDB, Express, React and Node.js.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 06 Months</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="300">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#172554,#1d4ed8)"><i class="fas fa-code"></i></div>
+                        <span class="course-badge" style="color:#6366f1">💻 New</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.00)</span></div>
+                        <h4>Full Stack Java Spring Boot</h4>
+                        <p class="course-desc">Enterprise-grade Java development with Spring Boot, REST APIs and microservices.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 06 Months</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="400">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#4a044e,#a21caf)"><i class="fas fa-users-cog"></i></div>
+                        <span class="course-badge" style="color:#ec4899">📈 In Demand</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.00)</span></div>
+                        <h4>Mastering Human Resource</h4>
+                        <p class="course-desc">HR management, recruitment strategies, labor laws, and employee engagement.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 04 Months</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="500">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#431407,#c2410c)"><i class="fas fa-handshake"></i></div>
+                        <span class="course-badge" style="color:#f59e0b">🎯 Career Boost</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.70)</span></div>
+                        <h4>Mastering Sales Training</h4>
+                        <p class="course-desc">Sales psychology, negotiation tactics, CRM tools and closing strategies.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 04 Months</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+                <div class="course-card glass-card tilt-card" data-animate="fade-up" data-delay="600">
+                    <div class="course-img-wrap">
+                        <div class="course-placeholder-img" style="background:linear-gradient(135deg,#581c87,#9333ea)"><i class="fas fa-palette"></i></div>
+                        <span class="course-badge" style="color:#c084fc">🎨 Creative</span>
+                        <div class="course-overlay"></div>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(5.00)</span></div>
+                        <h4>Mastering Frontend Development</h4>
+                        <p class="course-desc">Master frontend development with hands-on, real-time projects.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 06 Months</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <button class="course-cta" onclick="openModal()">Enroll Now →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ STATS ═══════════════════ -->
+    <section class="stats" id="stats">
+        <div class="section-container">
+            <div class="stats-grid">
+                <div class="stat-card glass-card tilt-card" data-animate="fade-up" data-delay="0">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div><span class="stat-number" data-count="2000">0</span><span class="stat-plus">+</span></div>
+                    <p class="stat-label">Students Trained</p>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:85%"></div></div>
+                </div>
+                <div class="stat-card glass-card tilt-card" data-animate="fade-up" data-delay="100">
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    <div><span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span></div>
+                    <p class="stat-label">Hiring Partners</p>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:70%"></div></div>
+                </div>
+                <div class="stat-card glass-card tilt-card" data-animate="fade-up" data-delay="200">
+                    <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                    <div><span class="stat-number" data-count="87">0</span><span class="stat-plus">%</span></div>
+                    <p class="stat-label">Placement Rate</p>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:87%"></div></div>
+                </div>
+                <div class="stat-card glass-card tilt-card" data-animate="fade-up" data-delay="300">
+                    <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div><span class="stat-number" data-count="15">0</span><span class="stat-plus">+</span></div>
+                    <p class="stat-label">Expert Mentors</p>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:60%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ ABOUT ═══════════════════ -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-visual" data-animate="fade-right">
+                    <div class="about-3d-cube">
+                        <div class="cube-face cube-front glass-card"><i class="fas fa-laptop-code"></i><span>Learn</span></div>
+                        <div class="cube-face cube-back glass-card"><i class="fas fa-project-diagram"></i><span>Build</span></div>
+                        <div class="cube-face cube-left glass-card"><i class="fas fa-briefcase"></i><span>Work</span></div>
+                        <div class="cube-face cube-right glass-card"><i class="fas fa-chart-line"></i><span>Grow</span></div>
+                        <div class="cube-face cube-top glass-card"><i class="fas fa-star"></i><span>Excel</span></div>
+                        <div class="cube-face cube-bottom glass-card"><i class="fas fa-rocket"></i><span>Launch</span></div>
+                    </div>
+                </div>
+                <div class="about-content" data-animate="fade-left">
+                    <span class="section-tag">🏢 About Us</span>
+                    <h2 class="section-title">Empowering the Next Gen of <span class="gradient-text">Tech Leaders</span></h2>
+                    <p style="color:var(--text-secondary);margin-bottom:32px;line-height:1.8">
+                        Agumentik Educamp is part of the Agumentik Group of Companies — a leading EdTech organization offering cutting-edge technology training and placement-oriented skill development programs. We partner with top universities and companies to offer personalized mentorship and robust job placement support.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-item glass-card">
+                            <div class="afi-icon"><i class="fas fa-bullseye"></i></div>
+                            <div class="afi-content">
+                                <h4>Our Mission</h4>
+                                <p>Bridge the gap between education and industry through practical, industry-relevant training programs.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item glass-card">
+                            <div class="afi-icon"><i class="fas fa-eye"></i></div>
+                            <div class="afi-content">
+                                <h4>Our Vision</h4>
+                                <p>To become the most trusted EdTech company empowering students worldwide with future-ready skills.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item glass-card">
+                            <div class="afi-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="afi-content">
+                                <h4>Placement Support</h4>
+                                <p>Dedicated placement cell with resume building, mock interviews, and direct referrals to top companies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ CATEGORIES ═══════════════════ -->
+    <section class="categories" id="categories">
+        <div class="section-container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">📂 Course Categories</span>
+                <h2 class="section-title">Find the Perfect Path for <span class="gradient-text">Your Professional Growth</span></h2>
+            </div>
+            <div class="category-filters" data-animate="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="management">Management</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="marketing">Marketing</button>
+            </div>
+            <div class="category-grid">
+                <div class="cat-card glass-card tilt-card" data-category="management" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#312e81,#4338ca)"><i class="fas fa-comments-dollar"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <h4>Sales Training</h4>
+                        <p>Master the art of selling with modern negotiation and closing strategies.</p>
+                    </div>
+                </div>
+                <div class="cat-card glass-card tilt-card" data-category="marketing" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#7e22ce,#a855f7)"><i class="fas fa-bullhorn"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <h4>Digital Marketing</h4>
+                        <p>Become a digital marketing pro with SEO, SEM, social media and analytics.</p>
+                    </div>
+                </div>
+                <div class="cat-card glass-card tilt-card" data-category="web" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#047857,#10b981)"><i class="fas fa-layer-group"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h4>MERN Stack</h4>
+                        <p>Build modern full-stack web applications using the MERN technology stack.</p>
+                    </div>
+                </div>
+                <div class="cat-card glass-card tilt-card" data-category="web" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#1e40af,#3b82f6)"><i class="fas fa-code"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <h4>Java Spring Boot</h4>
+                        <p>Enterprise Java development with microservices architecture and cloud.</p>
+                    </div>
+                </div>
+                <div class="cat-card glass-card tilt-card" data-category="management" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#be185d,#ec4899)"><i class="fas fa-users-cog"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <h4>Human Resource</h4>
+                        <p>Master HR management, recruitment, talent acquisition, and labour laws.</p>
+                    </div>
+                </div>
+                <div class="cat-card glass-card tilt-card" data-category="web" data-animate="fade-up">
+                    <div class="cat-card-bg" style="background:linear-gradient(135deg,#9333ea,#c084fc)"><i class="fas fa-palette"></i></div>
+                    <div class="cat-card-content">
+                        <div class="cat-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <h4>Frontend Development</h4>
+                        <p>Build beautiful, responsive UIs with React, CSS animations and modern tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">💬 Testimonials</span>
+                <h2 class="section-title">Real Feedback from <span class="gradient-text">Our Achieving Learners</span></h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card glass-card" data-animate="fade-up" data-delay="0">
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">It has been a great experience working with Agumentik. I've learned so much — both soft skills like effective communication, and technical skills in HTML, CSS, JavaScript, and React including advanced concepts like carousel effects.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#f43f5e,#fb923c)">MJ</div>
+                        <div>
+                            <h5>Moram Venkata Satya Jaswanth</h5>
+                            <span>Frontend Web Dev • SRM University</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card" data-animate="fade-up" data-delay="100">
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">I had the incredible opportunity to learn digital marketing from K K Mishra, and it was a game-changer. His expertise and passion were evident in every lesson. Thanks to his guidance, I feel confident to navigate digital marketing.</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">AK</div>
+                        <div>
+                            <h5>Ankit Kr Sinha</h5>
+                            <span>Campaign Manager • Mediamint</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card" data-animate="fade-up" data-delay="200">
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">Agumentik Educamp transformed my career. The hands-on projects and mentorship from industry experts gave me the confidence to land my dream job. The placement support was exceptional!</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">PK</div>
+                        <div>
+                            <h5>Priya Kumar</h5>
+                            <span>Full Stack Developer • TCS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card" data-animate="fade-up" data-delay="300">
+                    <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testi-text">The HR Management course was incredibly comprehensive. The real-world case studies and practical assignments helped me develop skills that I immediately applied at my workplace. Highly recommended!</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">RS</div>
+                        <div>
+                            <h5>Rahul Sharma</h5>
+                            <span>HR Manager • Wipro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevTestimonial"><i class="fas fa-arrow-left"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn" id="nextTestimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ FAQ ═══════════════════ -->
+    <section class="faq" id="faq">
+        <div class="section-container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">❓ FAQs</span>
+                <h2 class="section-title">Got Questions? <span class="gradient-text">We Got Answers</span></h2>
+            </div>
+            <div class="faq-grid" data-animate="fade-up">
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">What programs does Agumentik Educamp offer?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>We offer professional courses (Backend Dev, Digital Marketing, Full Stack MERN, Java Spring Boot, HR Mastery, Sales Training, Frontend Dev) and special degree programs (BBA, BCA, B.Com, MBA, MCA) through our Agumentik Special Program with NAAC A+ Grade College partnerships.</p></div>
+                </div>
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">What courses are available?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>Our major courses include Backend Development, Master Digital Marketing, Full Stack with MERN Stack, Full Stack Java Spring Boot, Mastering Human Resource, Mastering Sales Training, and Mastering Frontend Development. Courses range from 4 to 6 months.</p></div>
+                </div>
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">What is the Agumentik Special Program?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>The Agumentik Special Program (ASP) combines a NAAC A+ Grade College Degree with practical skill-based training. You can earn BBA, BCA, B.Com, MBA, or MCA while simultaneously gaining industry-relevant skills and placement support.</p></div>
+                </div>
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">How does placement support work?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>Our dedicated placement cell offers resume building, mock interviews, soft skills training, and direct referrals to our network of 50+ hiring partners. We maintain an 87% placement rate with students placed in top companies across India.</p></div>
+                </div>
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">Can I attend classes online?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>Yes! We offer both live and virtual training options. Our online classes feature interactive sessions, real-time project work, recorded lectures for revision, and dedicated doubt-clearing sessions with mentors.</p></div>
+                </div>
+                <div class="faq-item glass-card">
+                    <button class="faq-question" onclick="toggleFaq(this)">What is the fee structure?<i class="fas fa-plus"></i></button>
+                    <div class="faq-answer"><p>Fee varies by program. We offer flexible EMI options and scholarship opportunities for deserving candidates. Contact us at +91-80696 40295 or visit our website to get detailed fee information and current offers.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ CTA SECTION ═══════════════════ -->
+    <section class="cta-section" id="cta">
+        <div class="section-container">
+            <div class="cta-card glass-card" data-animate="fade-up">
+                <div class="cta-bg-pattern"></div>
+                <div class="cta-content">
+                    <h2>Stay Updated, <span class="gradient-text">Stay Ahead</span> 🚀</h2>
+                    <p>Get the Latest Trends and Updates Delivered to You 📬</p>
+                    <form class="cta-form" onsubmit="event.preventDefault(); alert('Subscribed! 🎉')">
+                        <input type="email" placeholder="your.email@example.com" required>
+                        <button type="submit">Subscribe <i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="footer" id="contact">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Agumentik Educamp" class="footer-logo-img">
+                    </div>
+                    <p>At Agumentik Educamp, we specialize in empowering individuals through cutting-edge training programs and industry-relevant skills. Partnered with top universities and companies, we offer personalized mentorship and robust job placement support.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/company/agumentikeducamp" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/agumentikeducamp" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=+918069640295" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/agumentikeducamp/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Agumentik Special Program</a></li>
+                        <li><a href="#about">About Company</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Consult Now</h5>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <a href="tel:+918069640295">+91-80696 40295</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:info@agumentikeducamp.com">info@agumentikeducamp.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Office</strong>
+                                <span>Bangalore, India</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">Download Company Profile</a>
+                </div>
+                <p>© 2024 All Rights Reserved By Agumentik Educamp | Made with ❤️ by <a href="https://agumentiksoftware.com/">Agumentik Software</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════ FLOATING ACTION BUTTON ═══════════════════ -->
+    <div class="fab-container" id="fabContainer">
+        <button class="fab-main" id="fabMain" aria-label="Chat with us">
+            <i class="fas fa-comments"></i>
+        </button>
+        <a href="https://api.whatsapp.com/send?phone=+918069640295" class="fab-action fab-whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918069640295" class="fab-action fab-phone" aria-label="Call us">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- ═══════════════════ SCROLL TO TOP ═══════════════════ -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ═══════════════════ ENROLLMENT MODAL ═══════════════════ -->
+    <div class="modal-overlay" id="enrollModal">
+        <div class="modal-card glass-card">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header-section">
+                <h3>🎓 Start Your <span class="gradient-text">Journey Today</span></h3>
+                <p>Fill in your details and our team will reach out within 24 hours</p>
+            </div>
+            <form class="modal-form" onsubmit="event.preventDefault(); alert('🎉 Enrollment request submitted! We will contact you soon.'); closeModal();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Your City">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Program</label>
+                        <select id="programSelect" required>
+                            <option value="" disabled selected>Select Program</option>
+                            <option value="courses">Professional Courses</option>
+                            <option value="special">Special Programs (Degree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Course</label>
+                        <select id="courseSelect" required>
+                            <option value="" disabled selected>Select Course</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary-glow modal-submit">
+                    <span>Submit Enrollment</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
