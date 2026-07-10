@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="overlapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <clipPath id="leftClip">
+      <rect x="0" y="0" width="120" height="150"/>
+    </clipPath>
+    <clipPath id="rightClip">
+      <rect x="120" y="0" width="120" height="150"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Infinity path - left purple half -->
+  <path d="M120,75 C120,45 95,25 70,25 C40,25 15,48 15,75 C15,102 40,125 70,125 C95,125 120,105 120,75 Z" 
+        fill="url(#purpleGrad)" clip-path="url(#leftClip)"/>
+  <!-- Infinity left inner cutout -->
+  <ellipse cx="68" cy="75" rx="22" ry="20" fill="white" opacity="0.95"/>
+  
+  <!-- Infinity path - right blue half -->
+  <path d="M120,75 C120,105 145,125 170,125 C200,125 225,102 225,75 C225,48 200,25 170,25 C145,25 120,45 120,75 Z" 
+        fill="url(#blueGrad)" clip-path="url(#rightClip)"/>
+  <!-- Infinity right inner cutout -->
+  <ellipse cx="172" cy="75" rx="22" ry="20" fill="white" opacity="0.95"/>
+  
+  <!-- Center crossing piece -->
+  <path d="M108,52 L132,52 L132,98 L108,98 Z" fill="url(#overlapGrad)"/>
+  
+  <!-- Diamond accent at top -->
+  <rect x="112" y="18" width="16" height="16" rx="2" fill="url(#diamondGrad)" transform="rotate(45 120 26)"/>
+  
+  <!-- Re-draw cutouts on top of crossing to maintain holes -->
+  <ellipse cx="68" cy="75" rx="20" ry="18" fill="white"/>
+  <ellipse cx="172" cy="75" rx="20" ry="18" fill="white"/>
+</svg>
